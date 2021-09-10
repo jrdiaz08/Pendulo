@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta name="descripcion" content="Interfaz de control de PenDali v1">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Interfaz de control de PenDali v1</title>
+        <link rel="stylesheet" href="estilos.css">
+
+        <script src="script.js" type="text/javascript"></script>
+        <script src="bluetooth.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <section id="loader" >
+            <div id="espacio">
+            </div>
+            <div id="icono">
+            </div>
+        </section>
+        <section id="fondo">
+            <form class="tabla" action="javascript:void(0);">
+                <header >
+                    <a href="index.html"><img  class="marca" src="Marca.png" alt="Logo Popularte"></a>
+                </header>
+                <section id="Renglon">
+                    <div class="titulo">PenDali v1</div><div class="mediano">Fecha: <script>fecha();</script></div>
+                </section>
+                <section id="Renglon2">
+                    <button class="boton1" onclick="conectar()">Conectar</button>
+                    <button class="boton1" onclick="desconectar()">Desconectar</button>
+                </section>
+                <section id="Renglon">
+                    <label for="Caudal" class="pequeño">Caudal de pintura</label><input type="range" min="120" max="350" value="1" id="cau" class="mediano" oninput="Caudal() ">      
+                </section> 
+                <section id="Renglon2">   
+                   <div>
+                        <input type="color" class="pequeño" name="favcolor" value="#00ffff">
+                        <input type="color" class="pequeño" name="favcolor" value="#00ffff">
+                        <input type="color" class="pequeño" name="favcolor" value="#00ffff">
+                        <input type="color" class="pequeño" name="favcolor" value="#00ffff"> 
+                    </div>
+                    <div>
+                        <button class="boton2" onclick="GatilloA()"> A </button>
+                        <button class="boton2" onclick="GatilloB()"> B </button>
+                        <button class="boton2" onclick="GatilloC()"> C </button>
+                        <button class="boton2" onclick="GatilloD()"> D </button>  
+                    </div>
+                </section> 
+                <section id="Renglon2"> 
+                    <button class="boton1" onclick="IniciarPenDali()">Iniciar</button> 
+                    <button class="boton1" onclick="DetenerPendali()">Detener</button> 
+                </section> 
+            </form>
+        </section>
+        <footer id="final">
+           POPULARTE 2021 Version 1.0 ♦ Diseñado por: Jose Diaz ♦
+        </footer>
+
+    </body>
+</html>
