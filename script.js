@@ -1,15 +1,14 @@
 
-
-var estadoBandinski = 1;
-var velocidadG= 6993;
-var cantidadG= 102;
-var estadoPenDali = 1;
-var caudal = 120;
-var gatilloA = 1;
-var gatilloB = 1;
-var gatilloC = 1;
-var gatilloD = 1;
-var codigoSalida= null
+var estadoBandinski = 1; //Estado inicaial de variable
+var velocidadG= 6993; //Estado inicaial de variable
+var cantidadG= 102; //Estado inicaial de variable
+var estadoPenDali = 1; //Estado inicaial de variable
+var caudal = 120; //Estado inicaial de variable
+var gatilloA = 1; //Estado inicaial de variable
+var gatilloB = 1; //Estado inicaial de variable
+var gatilloC = 1; //Estado inicaial de variable
+var gatilloD = 1; //Estado inicaial de variable
+var codigoSalida= null //Estado inicaial de variable
 
 setTimeout(function () { // se ejecuta la funcion una vez se carga la pagina, con un retraso definido
     document.getElementById('loader').style.transform="scale(0)"; // en la seccion loader se altera la propiedad css escala   
@@ -31,76 +30,84 @@ function fecha() { // funcion que extrae la fecha del navegador, codigo descarga
     document.write(hoy.getFullYear());   
 }
 
-function EnviarBankinski(){
-  codigoSalida=(velocidadG)+(cantidadG*10000)+(estadoBandinski*10000000);
-  Enviar()
+function EnviarBankinski(){ //funcion para enviar la informacion a la maquina Bandinski v1
+  codigoSalida=(velocidadG)+(cantidadG*10000)+(estadoBandinski*10000000); //se calcula el codigo de salida como un solo numero entero
+  Enviar() //Envia el codigo a la maquina Bandinski v1
 }
-function EnviarPenDali(){
-  codigoSalida=(gatilloA)+(gatilloB*10)+(gatilloC*100)+(gatilloD*1000)+(caudal*10000)+(estadoPenDali*10000000);  
-  Enviar()
+function EnviarPenDali(){ //funcion para enviar la informacion a la maquina PenDali v1
+  codigoSalida=(gatilloA)+(gatilloB*10)+(gatilloC*100)+(gatilloD*1000)+(caudal*10000)+(estadoPenDali*10000000);  //se calcula el codigo de salida como un solo numero entero
+  Enviar() //Envia el codigo a la maquina
 }
-function IniciarBankinski(){ //funcion para iniciar la maquina Bankinski v1
-    estadoBandinski = 2;
-  EnviarBankinski()
+function IniciarBankinski(){ //funcion para iniciar la maquina Bandinski v1
+    estadoBandinski = 2; // se cambia el estado con el numero de esta variable
+  EnviarBankinski() //Se ejecuta dicha funcion
 }
 function DetenerBankinski(){ //funcion para detener la maquina Bankinski v1
-    estadoBandinski = 1;
-  EnviarBankinski()
+    estadoBandinski = 1; // se cambia el estado con el numero de esta variable
+  EnviarBankinski() //Se ejecuta dicha funcion
 }
 function IniciarPenDali(){ //funcion para iniciar la maquina PenDali v1
-  estadoPenDali = 2
-  EnviarPenDali()
+  estadoPenDali = 2 // se cambia el estado con el numero de esta variable
+  EnviarPenDali() //Se ejecuta dicha funcion
 }
 function DetenerPendali(){ //funcion para detener la maquina PenDali v1
-  estadoPenDali = 1;
-  EnviarPenDali()
+  estadoPenDali = 1; // se cambia el estado con el numero de esta variable
+  EnviarPenDali() //Se ejecuta dicha funcion
 }
-function VelocidadG(){
-    var VelocidadInv=document.getElementById("vel");
-    velocidadG=parseInt((1000000/VelocidadInv.value));
-    EnviarBankinski()
+function VelocidadG(){ //funcion que determina la velocidad de giro
+    var VelocidadInv=document.getElementById("vel"); // se referencia el input slider de velocidad
+    velocidadG=parseInt((1000000/VelocidadInv.value)); // se transforma la informacion capturada para que el slider tenga un efecto inverso
+    EnviarBankinski() //Se ejecuta dicha funcion
 }
-function CantidadG(){
-    cantidadG=(document.getElementById("can").value);
-    EnviarBankinski()
+function CantidadG(){ //funcion que determina la cantidad de giro
+    cantidadG=(document.getElementById("can").value); // se referencia el input slider de cantidad
+    EnviarBankinski() //Se ejecuta dicha funcion
 }
-function Caudal(){
-    caudal=(document.getElementById("cau").value);
-    EnviarPenDali()
+function Caudal(){ //funcion que determina el caudal de pintura
+    caudal=(document.getElementById("cau").value); // se referencia el input slider de caudal
+    EnviarPenDali()//Se ejecuta dicha funcion
 }
-function GatilloA(){
-  if (gatilloA==1){ // condicional que se cumple si gatillo es igual a cero
-    gatilloA = 2;
-    EnviarPenDali()   
+function GatilloA(){ //funcion que activa/desactiva la dosificacion de pintura de dicho motor
+  if (gatilloA==1){ // condicional que se cumple si gatillo es igual a uno
+    gatilloA = 2; // se cambia el estado con el numero de esta variable
+    document.getElementById("A").style.backgroundColor = "rgba(237, 255, 75)";// en el boton se altera el color de fondo para indicar su estado
+    EnviarPenDali() //Se ejecuta dicha funcion   
   }else{
-    gatilloA = 1;
-    EnviarPenDali()
+    gatilloA = 1; // se cambia el estado con el numero de esta variable
+    document.getElementById("A").style.backgroundColor = "rgba(255, 255, 255)";// en el boton se altera el color de fondo para indicar su estado
+    EnviarPenDali() //Se ejecuta dicha funcion
     }     
 }
-function GatilloB(){
-  if (gatilloB==1){ // condicional que se cumple si gatillo es igual a cero
-    gatilloB = 2;
-    EnviarPenDali()   
+function GatilloB(){ //funcion que activa/desactiva la dosificacion de pintura de dicho motor
+  if (gatilloB==1){ // condicional que se cumple si gatillo es igual a uno
+    gatilloB = 2; // se cambia el estado con el numero de esta variable
+    document.getElementById("B").style.backgroundColor = "rgba(237, 255, 75)";// en el boton se altera el color de fondo para indicar su estado
+    EnviarPenDali() //Se ejecuta dicha funcion  
   }else{
-    gatilloB = 1;
-    EnviarPenDali()
+    gatilloB = 1; // se cambia el estado con el numero de esta variable
+    document.getElementById("B").style.backgroundColor = "rgba(255, 255, 255)";// en el boton se altera el color de fondo para indicar su estado
+    EnviarPenDali() //Se ejecuta dicha funcion
     }   
 }
-function GatilloC(){
-  if (gatilloC==1){ // condicional que se cumple si gatillo es igual a cero
-    gatilloC = 2;
-    EnviarPenDali()   
+function GatilloC(){ //funcion que activa/desactiva la dosificacion de pintura de dicho motor
+  if (gatilloC==1){ // condicional que se cumple si gatillo es igual a uno
+    document.getElementById("C").style.backgroundColor = "rgba(237, 255, 75)";// en el boton se altera el color de fondo para indicar su estado
+    gatilloC = 2; // se cambia el estado con el numero de esta variable
+    EnviarPenDali() //Se ejecuta dicha funcion   
   }else{
-    gatilloC = 1;
-    EnviarPenDali()
+    gatilloC = 1; // se cambia el estado con el numero de esta variable
+    document.getElementById("C").style.backgroundColor = "rgba(255, 255, 255)";// en el boton se altera el color de fondo para indicar su estado
+    EnviarPenDali() //Se ejecuta dicha funcion
     }   
 }
-function GatilloD(){
-  if (gatilloD==1){ // condicional que se cumple si gatillo es igual a cero
-    gatilloD = 2;
-    EnviarPenDali()   
+function GatilloD(){ //funcion que activa/desactiva la dosificacion de pintura de dicho motor
+  if (gatilloD==1){ // condicional que se cumple si gatillo es igual a uno
+    gatilloD = 2; // se cambia el estado con el numero de esta variable
+    document.getElementById("D").style.backgroundColor = "rgba(237, 255, 75)";// en el boton se altera el color de fondo para indicar su estado
+    EnviarPenDali() //Se ejecuta dicha funcion   
   }else{
-    gatilloD = 1;
-    EnviarPenDali()
+    gatilloD = 1; // se cambia el estado con el numero de esta variable
+    document.getElementById("D").style.backgroundColor = "rgba(255, 255, 255)";// en el boton se altera el color de fondo para indicar su estado
+    EnviarPenDali() //Se ejecuta dicha funcion
     }   
 }
