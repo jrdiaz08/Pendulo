@@ -2,7 +2,7 @@
 //asignar un nombre y versión al cache
 const CACHE_NAME = 'v1_cache_pendulo',
   urlsToCache = [
-    'https://jrdiaz08.github.io/Pendulo/index.html',
+    './',
     'https://jrdiaz08.github.io/Pendulo/appleTouchIcon.png',
     'https://jrdiaz08.github.io/Pendulo/Bandinski.html',
     'https://jrdiaz08.github.io/Pendulo/BerlinSansFB.ttf',

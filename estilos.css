@@ -146,7 +146,7 @@ html, body { /*afecta a todo el cuerpo del documento*/
     font-size: 4vw; /*tamaño de letra que se ajusta al ancho de la pag*/  
     width: 20%; /*El ancho de la imagen cambia segun el ancho de la pag*/  
     font-family: "fuente"; /*estilo de letra*/ 
-    background: rgba(255, 255, 255); /*color de fondo*/
+    background: rgb(255, 255, 255); /*color de fondo*/
     padding: 4px; /*define un margen interior de 4px*/
     border-radius: 15px; /*redondea los bordes de la caja*/
     border: 1px solid; /*define el grosor del borde*/

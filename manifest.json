@@ -1,6 +1,6 @@
 {
-    "name": "#Popularte Péndulo",
-    "short_name": "#Péndulo",
+    "name": "Popularte Péndulo",
+    "short_name": "Péndulo",
     "description": "App de control para las maquinas PenDali v1 & Bandinski v1",
     "background_color": "#FFFFFF",
     "theme_color": "#DF8DFA",
