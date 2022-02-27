@@ -1,6 +1,6 @@
 
 var estadoBandinski = 1; //Estado inicaial de variable
-var velocidadG= 9999; //Estado inicaial de variable
+var velocidadG= 7000; //Estado inicaial de variable
 var cantidadG= 102; //Estado inicaial de variable
 var estadoPenDali = 1; //Estado inicaial de variable
 var caudal = 120; //Estado inicaial de variable
