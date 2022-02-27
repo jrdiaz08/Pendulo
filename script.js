@@ -56,7 +56,7 @@ function DetenerPendali(){ //funcion para detener la maquina PenDali v1
 }
 function VelocidadG(){ //funcion que determina la velocidad de giro
     var VelocidadInv=document.getElementById("vel"); // se referencia el input slider de velocidad
-    velocidadG=parseInt((1000000/VelocidadInv.value)); // se transforma la informacion capturada para que el slider tenga un efecto inverso
+    velocidadG=parseInt((-1*VelocidadInv.value)); // se transforma la informacion capturada para que el slider tenga un efecto inverso
     EnviarBankinski() //Se ejecuta dicha funcion
 }
 function CantidadG(){ //funcion que determina la cantidad de giro
