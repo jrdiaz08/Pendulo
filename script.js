@@ -1,6 +1,6 @@
 
 var estadoBandinski = 1; //Estado inicaial de variable
-var velocidadG= 6993; //Estado inicaial de variable
+var velocidadG= 9999; //Estado inicaial de variable
 var cantidadG= 102; //Estado inicaial de variable
 var estadoPenDali = 1; //Estado inicaial de variable
 var caudal = 120; //Estado inicaial de variable
@@ -56,7 +56,7 @@ function DetenerPendali(){ //funcion para detener la maquina PenDali v1
 }
 function VelocidadG(){ //funcion que determina la velocidad de giro
     var VelocidadInv=document.getElementById("vel"); // se referencia el input slider de velocidad
-    velocidadG=parseInt((-1*VelocidadInv.value)); // se transforma la informacion capturada para que el slider tenga un efecto inverso
+    velocidadG=(-1*VelocidadInv.value); // se transforma la informacion capturada para que el slider tenga un efecto inverso
     EnviarBankinski() //Se ejecuta dicha funcion
 }
 function CantidadG(){ //funcion que determina la cantidad de giro
