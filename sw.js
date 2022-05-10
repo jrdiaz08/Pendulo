@@ -7,7 +7,7 @@ const CACHE_NAME = 'Cache_Pendulo',
     'https://jrdiaz08.github.io/Pendulo/Bandinski.html',
     'https://jrdiaz08.github.io/Pendulo/BerlinSansFB.ttf',
   //'https://jrdiaz08.github.io/Pendulo/BG.png',
-  //'https://jrdiaz08.github.io/Pendulo/bluetooth.js',
+    'https://jrdiaz08.github.io/Pendulo/bluetooth.js',
     'https://jrdiaz08.github.io/Pendulo/estilos.css',
   // 'https://jrdiaz08.github.io/Pendulo/favicon.ico',
   //'https://jrdiaz08.github.io/Pendulo/icono1.png',
@@ -23,7 +23,7 @@ const CACHE_NAME = 'Cache_Pendulo',
   //'https://jrdiaz08.github.io/Pendulo/logo.png',
   //'https://jrdiaz08.github.io/Pendulo/marca.png',
     'https://jrdiaz08.github.io/Pendulo/PenDali.html',
-  //'https://jrdiaz08.github.io/Pendulo/script.js',
+    'https://jrdiaz08.github.io/Pendulo/script.js',
   ]
 
 //durante la fase de instalación, generalmente se almacena en caché los activos estáticos
