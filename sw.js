@@ -3,7 +3,7 @@
 const CACHE_NAME = 'Cache_Pendulo',
   urlsToCache = [
     './',
- //   './appleTouchIcon.png',
+    './appleTouchIcon.png',
     './Bandinski.html',
     './BerlinSansFB.ttf',
     './BG.png',
