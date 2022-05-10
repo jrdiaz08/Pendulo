@@ -3,7 +3,8 @@
 const CACHE_NAME = 'Cache_Pendulo',
   urlsToCache = [
     './',
-    'https://jrdiaz08.github.io/Pendulo/index.html',
+    './index.html',
+    
   ]
 
 //durante la fase de instalación, generalmente se almacena en caché los activos estáticos
