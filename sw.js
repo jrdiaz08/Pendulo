@@ -21,7 +21,7 @@ const CACHE_NAME = 'Cache_Pendulo',
     './icono512x512.png',
     './index.html',
     './logo.png',
-    './marca.png',
+    './Marca.png',
     './PenDali.html',
     './script.js',
   ]
