@@ -1,5 +1,7 @@
 ABRIR EL TERMINAL
 
+GIT config --global user.email "you@example.com" Para identificar nuesto usuario
+
 GIT clone "https:/etc..." .       (El "." es para que nose cree otra carpeta dentro de la carpeta principal)
 GIT status                        (revisar los cambios hasta el momento en el repositorio local)
 GIT add .                         (prepara los archivos para el commit, el "." es para incluir todos los archivos)

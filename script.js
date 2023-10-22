@@ -1,118 +1,123 @@
 
-if ('serviceWorker' in navigator) { //se activa la funcion de service worker, esta solo puede funcionar en el protocolo HTTPS
-  navigator.serviceWorker.register('./swPendulo.js')
-    .then(reg => console.log('Registro de Service Worker exitoso', reg))
-    .catch(err => console.warn('Error al registrar el Service Worker', err))
+let video = document.getElementById("video");
+let canales;
+let cambioCamara = "user";
+var videoconfig = {audio: false,
+  video: { facingMode: cambioCamara }
 }
-var estadoBandinski = 1; //Estado inicaial de variable
-var velocidadG= 5000; //Estado inicaial de variable
-var cantidadG= 102; //Estado inicaial de variable
-var estadoPenDali = 1; //Estado inicaial de variable
-var caudal = 120; //Estado inicaial de variable
-var gatilloA = 1; //Estado inicaial de variable
-var gatilloB = 1; //Estado inicaial de variable
-var gatilloC = 1; //Estado inicaial de variable
-var gatilloD = 1; //Estado inicaial de variable
-var codigoSalida= null //Estado inicaial de variable
+var alto = window.innerHeight; 
+var ancho = window.innerWidth;
+var altocomandos = alto*0.1;
+var altofinal = alto*0.1;
+var altopantalla = ancho*1.33;
+var altovideo = ancho*1.33;
+var altosuperior = (alto-altopantalla-altocomandos-altofinal)/2;
+var altoinferior = (alto-altopantalla-altocomandos-altofinal)/2;
+var centro = (ancho-(ancho*0.3))/2;
+var total = altosuperior+altopantalla+altoinferior+altocomandos+altofinal;
+console.log("alto= ",alto);
+console.log("ancho= ",ancho);
+console.log("alto superior= ",altosuperior);
+console.log("alto pantalla= ",altopantalla);
+console.log("alto inferior= ",altoinferior);
+console.log("alto comandos= ",altocomandos);
+console.log("alto final= ",altofinal);
+console.log("alto total= ",total);
 
-setTimeout(function () { // se ejecuta la funcion una vez se carga la pagina, con un retraso definido
-    document.getElementById('loader').style.transform="scale(0)"; // en la seccion loader se altera la propiedad css escala   
-},2000); // el retraso definido en milisegundos
+function startup() {
+
+  document.getElementById('fondo').style.height = alto + "px"; // en la seccion "fondo" se altera la propiedad css heigth
+  document.getElementById('fondo').style.width = ancho + "px"; // en la seccion "fondo" se altera la propiedad css width
+  document.getElementById('superior').style.height = altosuperior + "px"; // en la seccion "fondo" se altera la propiedad css heigth
+  document.getElementById('superior').style.width = ancho + "px"; // en la seccion "fondo" se altera la propiedad css width  
+  document.getElementById('pantalla').style.height = altopantalla + "px"; // en la seccion "pantalla" se altera la propiedad css heigth
+  document.getElementById('pantalla').style.width = ancho + "px"; // en la seccion "pantalla" se altera la propiedad css width 
+  document.getElementById('video').style.height = altovideo + "px"; // en la seccion "pantalla" se altera la propiedad css height
+  document.getElementById('video').style.width = ancho + "px"; // en la seccion "pantalla" se altera la propiedad css width 
+  document.getElementById('inferior').style.height = altoinferior + "px"; // en la seccion "fondo" se altera la propiedad css heigth
+  document.getElementById('inferior').style.width = ancho + "px"; // en la seccion "fondo" se altera la propiedad css width 
+  document.getElementById('comandos').style.height = altocomandos + "px"; // en la seccion "<comandos" se altera la propiedad css heigth
+  document.getElementById('comandos').style.width = ancho + "px"; // en la seccion "comandos" se altera la propiedad css width 
+  document.getElementById('final').style.height = altofinal + "px"; // en la seccion "final" se altera la propiedad css heigth
+  document.getElementById('final').style.width = ancho + "px"; // en la seccion "final" se altera la propiedad css width 
+  document.getElementById('lienzo').style.top = altosuperior + "px"; // en la seccion "final" se altera la propiedad css heigth
+  document.getElementById('lienzo').style.height = altovideo + "px"; // en la seccion "lienzo" se altera la propiedad css height
+  document.getElementById('lienzo').style.width = ancho + "px"; // en la seccion "lienzo" se altera la propiedad css width 
+  document.getElementById('vortice').style.top = altosuperior + "px"; // en la seccion "final" se altera la propiedad css heigth
+  document.getElementById('vortice').style.left = centro + "px"; // en la seccion "final" se altera la propiedad css width 
+    
+  navigator.mediaDevices.getUserMedia(videoconfig).then(stream => { 
+    video.srcObject = stream,
+    canales = stream.getTracks();
+    ;
+  }).catch(console.error)
+
+}
+  
+  window.addEventListener('load',startup, false);
 
 function fecha() { // funcion que extrae la fecha del navegador, codigo descargado
-    var hoy = new Date();
-    var m = new Array();
-    var d = new Array();
-    var an= hoy.getFullYear();
-    m[0]="Enero";  m[1]="Febrero";  m[2]="Marzo";
-    m[3]="Abril";   m[4]="Mayo";  m[5]="Junio";
-    m[6]="Julio";    m[7]="Agosto";   m[8]="Septiembre";
-    m[9]="Octubre";   m[10]="Noviembre"; m[11]="Diciembre";
-    document.write(hoy.getDate());
-    document.write(" de ");
-    document.write(m[hoy.getMonth()]);
-    document.write(" ");
-    document.write(hoy.getFullYear());   
+  var hoy = new Date();
+  var m = new Array();
+  var d = new Array();
+  var an= hoy.getFullYear();
+  m[0]="Enero";  m[1]="Febrero";  m[2]="Marzo";
+  m[3]="Abril";   m[4]="Mayo";  m[5]="Junio";
+  m[6]="Julio";    m[7]="Agosto";   m[8]="Septiembre";
+  m[9]="Octubre";   m[10]="Noviembre"; m[11]="Diciembre";
+  document.write(hoy.getDate());
+  document.write(" de ");
+  document.write(m[hoy.getMonth()]);
+  document.write(" ");
+  document.write(hoy.getFullYear());   
+  }
+
+function modo() {
+  if(cambioCamara == "user"){
+   canales.forEach(track => track.stop())
+    cambioCamara = "environment";
+    console.log("Camara= ",cambioCamara);
+    videoconfig = {audio: false,
+      video: { facingMode: cambioCamara }
+    }
+    navigator.mediaDevices.getUserMedia(videoconfig).then(stream => { 
+      video.srcObject = stream,
+      canales = stream.getTracks();
+      ;
+    }).catch(console.error)
+  }
+  else{
+    canales.forEach(track => track.stop())
+    cambioCamara = "user";
+    console.log("Camara= ",cambioCamara);
+    videoconfig = {audio: false,
+      video: { facingMode: cambioCamara }
+    }
+    navigator.mediaDevices.getUserMedia(videoconfig).then(stream => { 
+      video.srcObject = stream,
+      canales = stream.getTracks();
+      ;
+    }).catch(console.error)
+    
+  }
+};
+function capturar() {
+  var lienzo = document.getElementById('lienzo')
+  var contexto = lienzo.getContext('2d');
+  contexto.drawImage(video, 0, 0, 640, 480);
+  contexto.drawImage(vortice, altosuperior, centro, (ancho*0.3), 480);
+  document.getElementById('comandos').style.transform="scale(0)";
+  document.getElementById('alternos').style.transform="scale(0)";
+
 }
 
-function EnviarBankinski(){ //funcion para enviar la informacion a la maquina Bandinski v1
-  codigoSalida=(velocidadG)+(cantidadG*10000)+(estadoBandinski*10000000); //se calcula el codigo de salida como un solo numero entero
-  Enviar() //Envia el codigo a la maquina Bandinski v1
-}
-function EnviarPenDali(){ //funcion para enviar la informacion a la maquina PenDali v1
-  codigoSalida=(gatilloA)+(gatilloB*10)+(gatilloC*100)+(gatilloD*1000)+(caudal*10000)+(estadoPenDali*10000000);  //se calcula el codigo de salida como un solo numero entero
-  Enviar() //Envia el codigo a la maquina
-}
-function IniciarBankinski(){ //funcion para iniciar la maquina Bandinski v1
-    estadoBandinski = 2; // se cambia el estado con el numero de esta variable
-  EnviarBankinski() //Se ejecuta dicha funcion
-}
-function DetenerBankinski(){ //funcion para detener la maquina Bankinski v1
-    estadoBandinski = 1; // se cambia el estado con el numero de esta variable
-  EnviarBankinski() //Se ejecuta dicha funcion
-}
-function IniciarPenDali(){ //funcion para iniciar la maquina PenDali v1
-  estadoPenDali = 2 // se cambia el estado con el numero de esta variable
-  EnviarPenDali() //Se ejecuta dicha funcion
-}
-function DetenerPendali(){ //funcion para detener la maquina PenDali v1
-  estadoPenDali = 1; // se cambia el estado con el numero de esta variable
-  EnviarPenDali() //Se ejecuta dicha funcion
-}
-function VelocidadG(){ //funcion que determina la velocidad de giro
-    var VelocidadInv=document.getElementById("vel"); // se referencia el input slider de velocidad
-    velocidadG=(-1*VelocidadInv.value); // se transforma la informacion capturada para que el slider tenga un efecto inverso
-    EnviarBankinski() //Se ejecuta dicha funcion
-}
-function CantidadG(){ //funcion que determina la cantidad de giro
-    cantidadG=(document.getElementById("can").value); // se referencia el input slider de cantidad
-    EnviarBankinski() //Se ejecuta dicha funcion
-}
-function Caudal(){ //funcion que determina el caudal de pintura
-    caudal=(document.getElementById("cau").value); // se referencia el input slider de caudal
-    EnviarPenDali()//Se ejecuta dicha funcion
-}
-function GatilloA(){ //funcion que activa/desactiva la dosificacion de pintura de dicho motor
-  if (gatilloA==1){ // condicional que se cumple si gatillo es igual a uno
-    gatilloA = 2; // se cambia el estado con el numero de esta variable
-    document.getElementById("A").style.backgroundColor = "rgba(237, 255, 75)";// en el boton se altera el color de fondo para indicar su estado
-    EnviarPenDali() //Se ejecuta dicha funcion   
-  }else{
-    gatilloA = 1; // se cambia el estado con el numero de esta variable
-    document.getElementById("A").style.backgroundColor = "rgba(255, 255, 255)";// en el boton se altera el color de fondo para indicar su estado
-    EnviarPenDali() //Se ejecuta dicha funcion
-    }     
-}
-function GatilloB(){ //funcion que activa/desactiva la dosificacion de pintura de dicho motor
-  if (gatilloB==1){ // condicional que se cumple si gatillo es igual a uno
-    gatilloB = 2; // se cambia el estado con el numero de esta variable
-    document.getElementById("B").style.backgroundColor = "rgba(237, 255, 75)";// en el boton se altera el color de fondo para indicar su estado
-    EnviarPenDali() //Se ejecuta dicha funcion  
-  }else{
-    gatilloB = 1; // se cambia el estado con el numero de esta variable
-    document.getElementById("B").style.backgroundColor = "rgba(255, 255, 255)";// en el boton se altera el color de fondo para indicar su estado
-    EnviarPenDali() //Se ejecuta dicha funcion
-    }   
-}
-function GatilloC(){ //funcion que activa/desactiva la dosificacion de pintura de dicho motor
-  if (gatilloC==1){ // condicional que se cumple si gatillo es igual a uno
-    document.getElementById("C").style.backgroundColor = "rgba(237, 255, 75)";// en el boton se altera el color de fondo para indicar su estado
-    gatilloC = 2; // se cambia el estado con el numero de esta variable
-    EnviarPenDali() //Se ejecuta dicha funcion   
-  }else{
-    gatilloC = 1; // se cambia el estado con el numero de esta variable
-    document.getElementById("C").style.backgroundColor = "rgba(255, 255, 255)";// en el boton se altera el color de fondo para indicar su estado
-    EnviarPenDali() //Se ejecuta dicha funcion
-    }   
-}
-function GatilloD(){ //funcion que activa/desactiva la dosificacion de pintura de dicho motor
-  if (gatilloD==1){ // condicional que se cumple si gatillo es igual a uno
-    gatilloD = 2; // se cambia el estado con el numero de esta variable
-    document.getElementById("D").style.backgroundColor = "rgba(237, 255, 75)";// en el boton se altera el color de fondo para indicar su estado
-    EnviarPenDali() //Se ejecuta dicha funcion   
-  }else{
-    gatilloD = 1; // se cambia el estado con el numero de esta variable
-    document.getElementById("D").style.backgroundColor = "rgba(255, 255, 255)";// en el boton se altera el color de fondo para indicar su estado
-    EnviarPenDali() //Se ejecuta dicha funcion
-    }   
-}
+function aceptar() {
+  
+};
+function rechazar() {
+  document.getElementById('comandos').style.transform="scale(1)";
+  document.getElementById('alternos').style.transform="scale(0)";
+  
+};
+
+
