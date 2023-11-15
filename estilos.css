@@ -1,0 +1,215 @@
+* { /*afecta a todo el documento*/
+    overflow: hidden; /* evita el scroll hacia abajo*/
+    margin: 0px ; /*distancia de margenes exteriores*/
+    padding: 0px; /*distancia de margenes interiores*/    
+    box-sizing: border-box; /*borde de los bloques incluidos margin y padding*/
+    text-align: center; /*Se centra el contenido*/  
+}
+@font-face{ /*carga una fuente personalizada desde un archivo*/
+    font-family: "fuente"; /*se declara el nombre de la fuente*/
+    src: url(BerlinSansFB.ttf); /*se selecciona el archivo de la fuente*/
+}
+html, body { /*afecta a todo el cuerpo del documento*/
+    font-family: "fuente"; /*estilo de letra*/  
+    height: 100% ; /*se toma como alto de la pag todo el contenido*/  
+}
+#loader{ /*afecta a la seccion loader, espacio para mostrar el icono de inicio*/
+    width: 100%; /*se toma como ancho de seccion todo el contenido*/
+    height: 100%;/*se toma como alto de seccion todo el contenido*/
+    position: fixed; /*sobrepone la seccion loader para tapar el resto del contenido*/
+    background-color: rgb(255, 255, 255);
+}
+#espacio{/*afecta a la seccion espacio, para que el icono quede mas abajo*/
+    height: 20%; /*se toma como alto de la seccion el 20% del alto de todo el contenido*/
+    width:5px ; /*se toma como ancho de la seccion 5 pixeles*/
+}
+#icono{/*afecta a la seccion icono*/
+    animation-name: icono; /*se declara una animacion con el nombre de "icono"*/
+    animation-duration: 2s; /*se declara la duracion de la animacion*/
+    animation-iteration-count: initial;/*se declara las veces que se reproducira la animacion*/
+    animation-play-state: running;/*se declara si el estado de pausa/play*/
+    animation-direction:normal;/*se declara el sentido de reproduccion*/
+    animation-timing-function: linear;/*se declara la velocidad de reporduccion*/
+}
+@keyframes icono { /*se ejecuta la animacion de nombre "icono"*/
+    0%{height: 0%; /*inicia con una altura de 0*/ 
+       opacity: 0; /*inicia transparente*/
+       background-size: contain; /*limita el tamaño del fondo al contenido*/
+       background-image: url(Icono1.png);/*carga la imagen de fondo 1*/
+       background-repeat: no-repeat; /*evita que de muestre en modo mosaico*/
+       background-position: center center; /*centra en fondo horizontal y verticalmente*/
+    }
+    14%{height: 60%; /*sigue con una altura de 60% del total de la pagina*/
+        opacity: 1; /*inicia transparente*/
+        background-size: contain; /*limita el tamaño del fondo al contenido*/
+        background-image: url(Icono2.png); /*carga la imagen de fondo 2*/
+        background-repeat: no-repeat; /*evita que de muestre en modo mosaico*/
+        background-position: center center; /*centra en fondo horizontal y verticalmente*/
+    }
+    29%{height: 60%; /*sigue con una altura de 60% del total de la pagina*/
+        opacity: 1; /*totalmente opaco*/
+        background-size: contain; /*limita el tamaño del fondo al contenido*/
+        background-image: url(Icono3.png); /*carga la imagen de fondo 3*/
+        background-repeat: no-repeat; /*evita que de muestre en modo mosaico*/
+        background-position: center center; /*centra en fondo horizontal y verticalmente*/
+    }
+    42%{height: 60%; /*sigue con una altura de 60% del total de la pagina*/
+        opacity: 1;  /*totalmente opaco*/
+        background-size: contain; /*limita el tamaño del fondo al contenido*/
+        background-image: url(Icono4.png); /*carga la imagen de fondo 4*/
+        background-repeat: no-repeat; /*evita que de muestre en modo mosaico*/
+        background-position: center center; /*centra en fondo horizontal y verticalmente*/
+    }
+    56%{height: 60%; /*sigue con una altura de 60% del total de la pagina*/
+        opacity: 1; /*totalmente opaco*/
+        background-size: contain; /*limita el tamaño del fondo al contenido*/
+        background-image: url(Icono1.png); /*carga la imagen de fondo 1*/
+        background-repeat: no-repeat; /*evita que de muestre en modo mosaico*/
+        background-position: center center; /*centra en fondo horizontal y verticalmente*/
+    }
+    71%{height: 60%; /*sigue con una altura de 60% del total de la pagina*/
+        opacity: 1; /*totalmente opaco*/
+        background-size: contain; /*limita el tamaño del fondo al contenido*/
+        background-image: url(Icono2.png); /*carga la imagen de fondo 2*/
+        background-repeat: no-repeat; /*evita que de muestre en modo mosaico*/
+        background-position: center center; /*centra en fondo horizontal y verticalmente*/
+    }
+    84%{height: 60%; /*sigue con una altura de 60% del total de la pagina*/
+        opacity: 1; /*totalmente opaco*/
+        background-size: contain; /*limita el tamaño del fondo al contenido*/
+        background-image: url(Icono3.png); /*carga la imagen de fondo 3*/
+        background-repeat: no-repeat; /*evita que de muestre en modo mosaico*/
+        background-position: center center; /*centra en fondo horizontal y verticalmente*/
+    }
+    100%{height: 60%; /*sigue con una altura de 60% del total de la pagina*/
+        opacity: 0; /*termina transparente*/
+        background-size: contain; /*limita el tamaño del fondo al contenido*/
+        background-image: url(Icono4.png); /*carga la imagen de fondo 4*/
+        background-repeat: no-repeat; /*evita que de muestre en modo mosaico*/
+        background-position: center center;/*centra en fondo horizontal y verticalmente*/        
+    }
+}
+#fondo{ /*afecta a la seccion contenido*/
+    min-height: calc(100% - 30px); /*se toma el espacio del contenido menos el espacio del pie de pag*/
+    display: flex; /*flexibiliza el display para poder centrar todo el contenido*/  
+}
+#fondo::before{
+    content: "";/*permite mostrar el contenido*/
+    position: fixed;/*ajusta el contenido*/
+    width: 100%; /*el ancho de la imagen ocupa toda el ancho de la pag*/
+    height: 100%; /*el alto de la imagen ocupa toda el ancho de la pag*/
+    z-index: -1; /*ubica el contenido en el fondo*/
+    animation-name: fondo; /*se declara una animacion con el nombre "fondo"*/
+    animation-duration: 30s;/*se declara la duracion de la animacion*/
+    animation-iteration-count: infinite;/*se declara las veces que se reproducira la animacion*/
+    animation-direction: alternate-reverse; /*se declara el sentido de reproduccion*/
+    animation-timing-function: linear; /*se declara la velocidad de reporduccion*/
+}
+@keyframes fondo {/*se ejecuta la animacion de nombre "fondo"*/
+  from {background: url(BG.png);/*carga la imagen de fondo*/
+    background-repeat: round;/*expande la imagen al tamaño del fondo*/
+       transform: rotate(35deg); } /*angulo inicial de rotacion*/
+  to   { background: url(BG.png);/*carga la imagen de fondo*/
+    background-repeat: round;/*expande la imagen al tamaño del fondo*/
+      transform: rotate(-35deg); } /*angulo final del fondo*/
+}
+.contenido{ /*afecta a la seccion espacio2, para centrar el contenido*/
+    margin: auto; /*crea un margen suficiente para centrar el contenido*/    
+}
+.marcaIndex{ /*afecta a la seccion marcaIndex*/
+    width: 70%; /*El ancho de la imagen cambia segun el ancho de la pag*/
+}
+.marca{ /*afecta a la seccion marca*/
+    width: 50%; /*El ancho de la imagen cambia segun el ancho de la pag*/
+    padding-top: 2%; /*crea un margen interior*/
+}
+.boton1{ /*afecta a la seccion img*/
+    margin-top: 2%; /*fija el margen superior*/
+    margin-bottom: 2%; /*fija el margen inferior*/
+    font-family: "fuente"; /*estilo de letra*/ 
+    background: rgba(255, 255, 255); /*color de fondo*/
+    padding: 4px; /*define un margen interior de 4px*/
+    font-size: 5vw; /*tamaño de letra ue se ajusta al ancho de la pag*/
+    border-radius: 15px; /*redondea los bordes de la caja*/
+    border: 1px solid; /*define el grosor del borde*/
+    animation-name: bordes; /*se declara una animacion con el nombre de "bordes"*/
+    animation-duration: 2s; /*se declara la duracion de la animacion*/
+    animation-iteration-count: infinite; /*se declara las veces que se reproducira la animacion*/
+    animation-play-state: running; /*se declara si el estado de pausa/play*/
+    animation-direction: alternate-reverse; /*se declara el sentido de reproduccion*/
+    animation-timing-function: linear; /*se declara la velocidad de reporduccion*/
+}
+.boton2{ /*afecta a la seccion img*/
+    margin: auto; /*centra el contenido*/
+    margin-top: 2%; /*fija el margen superior*/
+    margin-bottom: 2%; /*fija el margen inferior*/
+    font-size: 4vw; /*tamaño de letra que se ajusta al ancho de la pag*/  
+    width: 20%; /*El ancho de la imagen cambia segun el ancho de la pag*/  
+    font-family: "fuente"; /*estilo de letra*/ 
+    background: rgb(255, 255, 255); /*color de fondo*/
+    padding: 4px; /*define un margen interior de 4px*/
+    border-radius: 15px; /*redondea los bordes de la caja*/
+    border: 1px solid; /*define el grosor del borde*/
+    animation-name: bordes; /*se declara una animacion con el nombre de "bordes"*/
+    animation-duration: 2s; /*se declara la duracion de la animacion*/
+    animation-iteration-count: infinite; /*se declara las veces que se reproducira la animacion*/
+    animation-play-state: running; /*se declara si el estado de pausa/play*/
+    animation-direction: alternate-reverse; /*se declara el sentido de reproduccion*/
+    animation-timing-function: linear; /*se declara la velocidad de reporduccion*/
+}
+@keyframes bordes { /*se ejecuta la animacion de nombre "bordes"*/
+    from {box-shadow:5px 3px 5px 0px slategray; /*define una sombra en el borde de la caja*/
+    }
+    to {box-shadow:-3px 5px 12px 0px slategray; /*define una sombra en el borde de la caja*/
+    }
+}
+.link{ /*afecta a la seccion link*/
+    font-family: "fuente"; /*define el tipo de fuente*/
+    text-decoration: none; /*le quita el subrayado al link*/
+    color: black; /*define el color de fuente*/
+    background:transparent; /*define el color de fondo*/
+}
+.tabla{ /*afecta el espacio en la parte superior*/
+    margin: auto; /*centra el contenido*/
+    width: 90%; /*El ancho de la imagen cambia segun el ancho de la pag*/
+    background: rgba(245, 245, 245, 0.75); /*Define el color de fondo de los botones*/
+    border-radius: 25px; /*redondea los bordes de la caja*/
+    border: 1px solid; /*define el grosor del borde*/
+    animation-name: bordes; /*se declara una animacion con el nombre de "bordes"*/
+    animation-duration: 2s; /*se declara la duracion de la animacion*/
+    animation-iteration-count: infinite; /*se declara las veces que se reproducira la animacion*/
+    animation-play-state: running; /*se declara si el estado de pausa/play*/
+    animation-direction: alternate-reverse; /*se declara el sentido de reproduccion*/
+    animation-timing-function: linear; /*se declara la velocidad de reporduccion*/ 
+}
+#Renglon{ /*afecta a los renglones del contenido*/   
+    padding: 2%; /*crea un margen interior*/
+    margin: auto; /*centra el contenido*/
+    display: flex; /*rompe el formato block*/
+}
+#Renglon2{ /*afecta a los renglones del contenido*/
+    margin: auto;
+    padding: 2%; /*crea un margen interior*/  
+}
+.titulo{ /*afecta a la seccion tabla*/
+    margin: auto;
+    font-size: 6vw; /*tamaño de letra que se ajusta al ancho de la pag*/ 
+    width: 40%; /*el ancho de la tabla ocupa toda el ancho de la pag*/
+} 
+.pequeño{ /*afecta a la seccion tabla*/
+    margin: auto; /*centra el contenido*/
+    font-size: 4vw; /*tamaño de letra que se ajusta al ancho de la pag*/  
+    width: 20%; /*El ancho de la imagen cambia segun el ancho de la pag*/  
+}
+.mediano{ /*afecta a la seccion tabla*/
+    margin: auto; /*centra el contenido*/
+    font-size: 4vw; /*tamaño de letra que se ajusta al ancho de la pag*/  
+    width: 70%; /*El ancho de la imagen cambia segun el ancho de la pag*/  
+}
+#final{ /*afecta a la seccion final*/
+    background-color: rgba(255, 255, 255, 0.75);
+    font-size: 3vw; /*tamaño de letra*/
+    height: 30px; /*define una altura de 30px a la caja*/
+    border-top: solid 1px black; /*colorea solo el border superior de la caja*/
+}
+  

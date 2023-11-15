@@ -1,0 +1,11 @@
+ABRIR EL TERMINAL
+
+GIT clone "https:/etc..." .       (El "." es para que nose cree otra carpeta dentro de la carpeta principal)
+GIT status                        (revisar los cambios hasta el momento en el repositorio local)
+GIT add .                         (prepara los archivos para el commit, el "." es para incluir todos los archivos)
+GIT commit -m "..."               (genera el commit que es el registro de los cambios, el "..." es para poner el nombre de identificacion)
+GIT push                          (sube los cambios al repositorio remoto)
+GIT log                           (mirar el historico de los commit para recuperar archivos anteriores)
+GIT branch                        (mirar las ramas existentes)
+GIT checkout "..."                  (selecciona una rama concreta o un commit, el "..." es para crear o indicar el nombre de la rama o el identificador del commit)
+GIT pull                          (Descarga los archivos del repositorio remoto al repositorio local)
